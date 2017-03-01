@@ -2,11 +2,11 @@
 $packs = $_GET['packs'];
 $order = $_GET['order'];
 $errors=array();
-if(!is_numeric($order)){
+if(!is_numeric($order)) {
     array_push($errors,"The provided order size is invalid");
 }
 $vals=explode(",",$packs);
-if(array_filter($vals,'is_numeric')!=$vals){
+if(array_filter($vals,'is_numeric')!=$vals) {
     array_push($errors,"Invalid values given for pack sizes");
 }
 
@@ -24,8 +24,7 @@ print_results($results);
 
 function calculate_packs($packs, $order){
     $current = current($packs);
-    if($current === FALSE)
-    {
+    if($current === FALSE) {
         return new results(array());
     } else {
         $return = new results(array());
@@ -45,8 +44,7 @@ function calculate_packs($packs, $order){
 
 function calculate_volume($packs, $order){
     $current = current($packs);
-    if($current === FALSE)
-    {
+    if($current === FALSE) {
         return 0;
     } else {
 
