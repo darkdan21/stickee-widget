@@ -9,16 +9,16 @@ $vals=explode(",",$packs);
 if(array_filter($vals,'is_numeric')!=$vals){
     array_push($errors,"Invalid values given for pack sizes");
 }
+
+$results = new results($errors);
 if (empty($errors)){
     sort($vals);
     $vals=array_reverse($vals);
+    $order=calculate_volume($vals,$order); //get the number that will be delivered
+    reset($vals);
+    $results->add_results(calculate_packs($vals,$order)); //calculate the number of each pack
+
 }
-
-$results = new results($errors);
-
-$order=calculate_volume($vals,$order); //get the number that will be delivered
-reset($vals);
-$results->add_results(calculate_packs($vals,$order)); //calculate the number of each pack
 
 print_results($results);
 
