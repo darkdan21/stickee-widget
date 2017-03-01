@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+    stickee:
+        container_name: "stickee"
+        build: .
+        ports:
+            - 8080:8080
